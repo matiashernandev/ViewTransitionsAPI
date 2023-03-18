@@ -55,30 +55,68 @@
 			::view-transition-new(root) {
 				animation-duration: 3s;
 			}
+
+			.dark-mode {
+				position: absolute;
+				top: 0.5em;
+				right: 0.5em;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="content">
 			<h1>Contenido original</h1>
 		</div>
+
 		<button id="updateButton">Actualizar contenido</button>
+
+		<button id="revertButton">Volver al contenido original</button>
+
+		<button class="dark-mode" id="darkModeButton">Modo oscuro</button>
 
 		<script>
 			const content = document.querySelector("#content");
 			const updateButton = document.querySelector("#updateButton");
+			const revertButton = document.querySelector("#revertButton");
+			const darkModeButton = document.querySelector("#darkModeButton");
 
 			updateButton.addEventListener("click", () => {
 				const updateContent = () => {
 					content.innerHTML = "<h1>Nuevo contenido</h1>";
 				};
-
 				if (!document.startViewTransition) {
 					updateContent();
 					return;
 				}
-
 				document.startViewTransition(updateContent);
 			});
+
+			revertButton.addEventListener("click", () => {
+				const revertContent = () => {
+					content.innerHTML = "<h1>Contenido original</h1>";
+				};
+				if (!document.startViewTransition) {
+					revertContent();
+					return;
+				}
+				document.startViewTransition(revertContent);
+			});
+
+			darkModeButton.addEventListener("click", () => {
+				document.body.classList.toggle("dark");
+			});
 		</script>
+
+		<style id="darkStyle">
+			body.dark {
+				background-color: #333333 !important;
+			}
+			body.dark * {
+				color: white !important;
+			}
+			body.dark button {
+				background-color: #666666 !important;
+			}
+		</style>
 	</body>
 </html>
