@@ -6,10 +6,49 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Web Transition API</title>
 		<style>
+			body {
+				background-color: #e6f7ff;
+			}
+
+			button {
+				background-color: #99ccff;
+				color: white;
+				font-size: 18px;
+				padding: 10px 20px;
+				border-radius: 5px;
+				border: none;
+			}
+
+			button:hover {
+				background-color: #66b3ff;
+			}
+
+			button:focus {
+				outline: none;
+			}
+
+			h1 {
+				color: #0066cc;
+			}
+
+			h1::after {
+				content: "";
+				display: block;
+				height: 2px;
+				width: 100%;
+				background: #0066cc;
+				margin-top: 0.5em;
+				border-radius: 0.5em;
+			}
+
+			h1::before {
+				content: "";
+				display: block;
+				height: 0.5em;
+			}
+
 			#content {
-				width: 200px;
-				height: 100px;
-				border: 1px solid black;
+				padding-left: 0.5em;
 			}
 
 			::view-transition-old(root),
@@ -33,9 +72,9 @@
 					content.innerHTML = "<h1>Nuevo contenido</h1>";
 				};
 
-				// Fallback for browsers that don't support this API:
 				if (!document.startViewTransition) {
 					updateContent();
+					return;
 				}
 
 				document.startViewTransition(updateContent);
