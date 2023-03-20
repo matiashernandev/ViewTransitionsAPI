@@ -1,5 +1,5 @@
 [DOC](https://developer.chrome.com/docs/web-platform/view-transitions/)
-
+[🤯](https://twitter.com/charca/status/1637832314364497920)
 # API de transiciones de vista (View Transitions API)
 
 La API de transiciones de vista (View Transitions API) es una herramienta que permite actualizar el DOM en un solo paso mientras se genera una transición animada entre dos estados. Esta característica está disponible en Chrome 111+ y actualmente está en versión beta.
